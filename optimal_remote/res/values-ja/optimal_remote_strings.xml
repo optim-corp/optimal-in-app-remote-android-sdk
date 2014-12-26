@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="sdp_button_cancel">中断する</string>
+	<string name="sdp_cancel_dialog_message">接続を中断しますか？</string>
+	<string name="sdp_cancel_dialog_button_yes">はい</string>
+	<string name="sdp_cancel_dialog_button_no">いいえ</string>
+	<string name="sdp_cancel_progress_message">中断しています・・・</string>
+
+	<string name="sdp_will_reserve_indicator">接続しています・・・</string>
+	<string name="sdp_did_reserve_indicator">下記の受付番号を\nオペレーターにお伝えください。</string>
+
+	<string name="sdp_conn_perm_dialog_message">「%1$s」のオペレーターが接続を要求しています。\n\n許可しますか？</string>
+	<string name="sdp_conn_perm_dialog_button_decline">拒否</string>
+	<string name="sdp_conn_perm_dialog_button_accept">許可</string>
+	<string name="sdp_conn_perm_progress_message_decline">拒否しています・・・</string>
+	<string name="sdp_conn_perm_progress_message_accept">許可しています・・・</string>
+
+	<string name="sdp_expired_dialog_message">受付番号の有効期限が切れました。\n接続を中断します。</string>
+	<string name="sdp_expired_dialog_button_ok">OK</string>
+
+	<string name="sdp_server_error_dialog_message">通信エラーが発生しました。\n接続を中断します。\n\n(エラー: %1$d, %2$d)</string>
+	<string name="sdp_server_error_dialog_button_ok">OK</string>
+
+	<string name="orcp1_will_connect_indicator">接続しています・・・</string>
+	<string name="orcp1_will_reconnect_indicator">再接続しています・・・</string>
+	<string name="orcp1_did_complete_indicator">ご利用ありがとうございました。</string>
+
+	<string name="orcp1_failure_dialog_message">オペレーターとの接続に失敗しました。電波の良い所でご利用ください。</string>
+	<string name="orcp1_failure_dialog_button_exit">終了</string>
+	<string name="orcp1_failure_dialog_button_retry">再試行</string>
+
+	<string name="orcp1_reconnect_dialog_message">オペレーターとの接続が切断されました。電波の良い所でご利用ください。</string>
+	<string name="orcp1_reconnect_dialog_button_exit">終了</string>
+	<string name="orcp1_reconnect_dialog_button_reconnect">再接続</string>
+
+	<string name="orcp1_disconnect_dialog_message">接続を切断しますか？</string>
+	<string name="orcp1_disconnect_dialog_button_yes">はい</string>
+	<string name="orcp1_disconnect_dialog_button_no">いいえ</string>
+	<string name="orcp1_disconnect_progress_message">切断しています・・・</string>
+
+	<string name="lobby_button_cancel">キャンセル</string>
+    <string name="control_confirmation_dialog_title">リモート操作確認</string>
+	<string name="control_confirmation_dialog_message">オペレーターが遠隔による操作を要求しています。よろしいでしょうか？\n\nなお、操作ではオペレーターがお客さまのデータを取得、改ざんすることはありません。すべてお客さまの同意に基づき設定を行います。</string>
+	<string name="confirmation_dialog_button_title_decline">拒否</string>
+	<string name="confirmation_dialog_button_title_accept">許可</string>
+	<string name="confirmation_dialog_button_title_accept_once">許可 (今回のみ)</string>
+
+	<string name="menu_speaker_button_label">スピーカー</string>
+	<string name="menu_mute_button_label">消音</string>
+	<string name="menu_disconnect_button_label">切断</string>
+
+</resources>

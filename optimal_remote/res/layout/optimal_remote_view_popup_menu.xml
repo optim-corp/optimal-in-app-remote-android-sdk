@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ImageButton
+        android:id="@+id/button_speaker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="#00FFFFFF"
+        android:src="@drawable/optimal_remote_speaker_loud" />
+
+    <ImageButton
+        android:id="@+id/button_mute"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@id/button_speaker"
+        android:layout_marginRight="15dp"
+        android:background="#00FFFFFF"
+        android:src="@drawable/optimal_remote_mic_on" />
+
+    <ImageButton
+        android:id="@+id/button_disconnect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/button_speaker"
+        android:layout_marginLeft="15dp"
+        android:background="#00FFFFFF"
+        android:src="@drawable/optimal_remote_disconnect" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/button_mute"
+        android:layout_alignLeft="@id/button_mute"
+        android:layout_alignRight="@id/button_mute"
+        android:gravity="center"
+        android:text="@string/menu_mute_button_label"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/button_mute"
+        android:layout_alignLeft="@id/button_speaker"
+        android:layout_alignRight="@id/button_speaker"
+        android:gravity="center"
+        android:text="@string/menu_speaker_button_label"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/button_disconnect"
+        android:layout_alignLeft="@id/button_disconnect"
+        android:layout_alignRight="@id/button_disconnect"
+        android:gravity="center"
+        android:text="@string/menu_disconnect_button_label"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+</RelativeLayout>
