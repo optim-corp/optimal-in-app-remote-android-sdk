@@ -24,7 +24,7 @@ Optimal Remote の詳細については製品ページ（http://www.optim.co.jp/
 ご担当者名：
 メールアドレス：
 In App Remote SDK を組み込むアプリケーション名：
-対象アプリの「Bundle Identifier」（ SDK用埋込情報の生成で使用）：
+対象アプリの AndroidManifest.xml で定義した「package」属性の値（ SDK用埋込情報の生成で使用）：
 In App Remote SDK 機能をどのような用途でご活用でしょうか？（差しさわりのない範囲で詳細をお教えください）：
 
 Optimal Remote オペレーターツールおよび SDK 使用許諾規約
@@ -45,7 +45,7 @@ Optimal Remote オペレーターツールおよび SDK 使用許諾規約
 部署名：
 ご担当者名：
 メールアドレス：
-対象アプリの「Bundle Identifier」（ SDK用埋込情報の生成で使用）：
+対象アプリの AndroidManifest.xml で定義した「package」属性の値（ SDK用埋込情報の生成で使用）：
 In App Remote SDK を組み込むアプリケーション名：
 In App Remote SDK 機能をどのような用途でご活用でしょうか？（差しさわりのない範囲で詳細をお教えください）：  
 

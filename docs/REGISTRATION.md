@@ -27,7 +27,7 @@ Company:
 Deaprtment:
 
 App name building with In App Remote SDK:
-"Bundle Indentifier" for App built with SDK (For generating your App identify):
+"package" attribute value in AndroidManifest.xml for App built with SDK (For generating your App identify):
 How to utilize OPTiM’s Remote SDK features in your App?:
 
 Addendum: Agreement to use OPTiM’s Optimal Remote Operator Tool for Development Purposes Only
@@ -57,7 +57,7 @@ Company:
 Deaprtment:
 
 Describe the second App name building with In App Remote SDK:
-"Bundle Indentifier" for App built with SDK (For generating your App identify):
+"package" attribute value in AndroidManifest.xml for App built with SDK (For generating your App identify):
 How to utilize OPTiM’s Remote SDK features in your App?:
 
 ```
