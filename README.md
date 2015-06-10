@@ -132,13 +132,15 @@ public class MainActivity extends Activity implements IORIASessionCallback, OnCl
     mSession = app.getSession();
     // 12. Set an event listener of beginning remote assistance event and ending.
     mSession.setSessionCallback(this, new Handler());
+    // 13. Enable VoIP (default: false)
+    mSession.setVoiceChatEnabled(true);
 
-    // 13. Set a click event listener.
+    // 14. Set a click event listener.
     mButtonHelp = (Button) findViewById(R.id.button_help);
     mButtonHelp.setOnClickListener(this);
   }
 
-  // 14. Start remote assistance when clicked.
+  // 15. Start remote assistance when clicked.
   @Override
   public void onClick(View v) {
     if (v.getId() == R.id.button_help){

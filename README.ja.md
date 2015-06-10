@@ -125,13 +125,15 @@ public class MainActivity extends Activity implements IORIASessionCallback, OnCl
     mSession = app.getSession();
     // 12. 接続の開始イベントと終了イベントのイベントリスナーを設定します。
     mSession.setSessionCallback(this, new Handler());
+    // 13. VoIP を有効にする (既定では false)
+    mSession.setVoiceChatEnabled(true);
 
-    // 13. 接続開始ボタンにイベントリスナーを設定します。
+    // 14. 接続開始ボタンにイベントリスナーを設定します。
     mButtonHelp = (Button) findViewById(R.id.button_help);
     mButtonHelp.setOnClickListener(this);
   }
 
-  // 14. ボタンクリック時にオペレーターとの接続を開始します。
+  // 15. ボタンクリック時にオペレーターとの接続を開始します。
   @Override
   public void onClick(View v) {
     if (v.getId() == R.id.button_help){
