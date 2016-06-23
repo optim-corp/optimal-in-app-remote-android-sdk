@@ -9,4 +9,12 @@
  6. After reconnected, the remote controlling will not be enabled. In this case, enable the remote controlling again.
  7. Remote controlling does not support out of the application area. (ex. Area of software keyboard, notification area.
  8. This SDK works on the ARM architecture.
- 9. There are some devices which stop an application process when home button is pressed whether using this SDK or not. Please disable home button while remote assistance.
+ 9. There are some devices which stop an application process when home button is pressed whether using this SDK or not.
+ 10. Even if the [half-width characters/full-width characters] button is toggled on the operator tool side, the keyboard input method of the target application will not change.
+ 11. For each device, right cliking while using the pointer finger will move the finger pointer to the upper left of the screen.
+ 12. If the device is rotated while using the pointer finger, the finger pointer will move to the upper left of the screen.
+ 13. When the remote control function is available, calling `"ORIASession.resume"` after calling `"ORIASession.pause"` will cause the remote control function to become disabled.
+ 14. When the voice call microphone is disabled, calling `"ORIASession.resume"` after calling `"ORIASession.pause"` will cause the microphone to become available.
+ 15. If `"ORIASession.resume"` is called one minute after `"ORIASession.pause"` is called, the connection confirmation dialog will be displayed.
+ 16. If calling `"ORIASession.pause"` interrupts the connection, calling `"ORIASession.shutdown"` will change `"ORIASession.canOpen"` to false.
+ 17. When an internet connection cannot be established, calling `"ORIASession.open"` will cause the "Connecting..." message to continue being displayed.
