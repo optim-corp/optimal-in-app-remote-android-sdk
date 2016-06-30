@@ -18,3 +18,4 @@
  15. `ORIASession.pause` を呼び出してから 1 分ほど経過した後に、 `ORIASession.resume` を呼び出すと、接続確認ダイアログが表示されます。
  16. `ORIASession.pause` を呼び出して接続を中断した状態で、 `ORIASession.shutdown` を呼び出した場合 `ORIASession.canOpen` の戻り値は、`false` になります。
  17. インターネットに接続できない状態で、 `ORIASession.open` を呼び出すと、「接続しています・・・」と表示した状態を継続します。
+ 18. 対象アプリケーションを遠隔支援中にバックグラウンドにした状態で、インターネットから切断すると、対象アプリケーションが強制終了します。

@@ -7,7 +7,7 @@ Optimal In-App Remote SDK for Android は、 Android アプリの遠隔支援を
 
 ## 対象環境
   - SDK 動作環境
-    1. Android 4.0 以降
+    1. Android 2.3、 Android 4.0 以降
     2. 英語、日本語
       - デフォルト言語は英語です
     3. インターネットに接続できるネットワーク環境
