@@ -9,7 +9,7 @@ This documentation in Japanese is here: [日本語ドキュメント](README.ja.
 
 ##Operating environment
  - Operating Environment for app
-     1. Android 2.3, Android 4.0 or later
+     1. Android 2.3, Android 4.0 - 7.0
      2. English / Japanese environment
          - The default language is English.
      3. Access to the Internet is required.
