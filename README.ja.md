@@ -12,7 +12,7 @@ Optimal In-App Remote SDK for Android は、 Android アプリの遠隔支援を
       - デフォルト言語は英語です
     3. インターネットに接続できるネットワーク環境
   - 開発環境
-    - [ADT(Android Developer Tools)](http://developer.android.com/tools/help/adt.html) 導入済み Eclipse
+    - Android Studio または、[ADT(Android Developer Tools)](http://developer.android.com/tools/help/adt.html) 導入済み Eclipse
 
 ## この SDK でできること
 
@@ -43,11 +43,66 @@ SDK を組み込んだアプリの画面にオペレーターから指マーク�
 ### 1. この Git リポジトリをチェックアウトしてください
 Git でチェックアウトしてください。アーカイブファイルとしてダウンロードする場合は、展開してください。
 
-### 2. SDK を Eclipse でインポートしてください
-インポートは、次の通りです。 (File) -> (Import) -> (Android) -> (Existing Android Into Workspace) で Import Projects ダイアログを開きます。(Browse...) で先ほど取得または展開したディレクトリを指定してください。最後に (Finish) を押すとインポートが完了します。
+### 2. SDK をインポートしてください
+お使いの開発環境に合わせてインポートしてください。
+
+#### Android Studio の場合
+対象のアプリケーションの settings.gradle に次の設定を追記してください。 Fileの引数は、 SDK ディレクトリに含まれる `optimal_remote` へのパスを指定してください。例えば、`C:\\Users\\username\\optimal_remote` や `/Users/username/optimal_remote` など。
+
+```
+include ':optimal_remote'
+project(':optimal_remote').projectDir = new File('[optimal_remote ディレクトリへのパス]')
+```
+
+次に、対象アプリケーションの依存ライブラリへ SDK を追加するために、 `build.gradle` へ次のコードを追記します。
+
+```
+dependencies {
+    compile project(':optimal_remote')
+}
+```
+
+SDK の AndroidManifest.xml に含まれる要素が、対象アプリケーションと競合する場合がありますので、対処が必要です。
+対処方法には、下記 2 つの編集方法があります。
+
+##### SDK の AndroidManifest.xml を編集する方法
+
+optimal_remote ディレクトリ中の `AndroidManifest.xml` に含まれる `android:theme` 属性と `android:allowBackup` 属性を削除してください。
+
+```
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="jp.co.optim.optimalremote"
+
+    ...
+
+    <application>
+    </application>
+
+</manifest>
+```
+
+##### 対応アプリケーションの AndroidManifest.xml を編集する方法
+
+対象アプリケーションの AndroidManifest.xml へ、 `xmlns:tools="http://schemas.android.com/tools"` 属性を `manifest` 要素へ、`tools:replace="android:theme,android:allowBackup"` 属性を `application` 要素へ追記してください。
+
+```
+<manifest package="com.example.your_app"
+          xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools">
+
+    ...
+
+    <application
+        tools:replace="android:theme,android:allowBackup"
+    ...
+/manifest>
+```
+
+#### Eclipse の場合
+インポートは、次の通りです。 (File) -> (Import) -> (Android) -> (Existing Android Into Workspace) で Import Projects ダイアログを開きます。(Browse...) で先ほど取得または展開したディレクトリを指定してください。次に (Finish) を押すとインポートが完了します。
 SDK には、ライブラリファイル、レイアウトファイル、文字列ファイルと画像ファイルが含まれています。
 
-### 3. 対象のアプリケーションに SDK を関連付けしてください
+最後に、SDK を対象のアプリケーションに関連付けしてください。
 関連付けるには、対象のアプリケーションを右クリック、 (Properties) -> (Android) -> (Add...) で SDK ディレクトリを選択し、OK ボタンを押してください。
 
 ## SDK を利用するためのチュートリアル
