@@ -14,7 +14,7 @@ This documentation in Japanese is here: [日本語ドキュメント](README.ja.
          - The default language is English.
      3. Access to the Internet is required.
  - Required development environment
-     1. Eclipse with [ADT(Android Developer Tools)](http://developer.android.com/tools/help/adt.html)
+     - Android Studio or Eclipse with [ADT(Android Developer Tools)](http://developer.android.com/tools/help/adt.html)
 
 ## SDK features
 
@@ -46,12 +46,70 @@ Before starting with the procedure below, register as a developer and make sure 
 ### 1. Checkout this git repository
 When downloaded as a archiving file, expand it.
 
-### 2. Import as optimal_remote project by eclipse
-The below is how to import optimal_remote project. Open "Import Projects" dialog by operating (File) -> (Import) -> (Android) -> (Existing Android Into Workspace) .
+### 2. Import the SDK
+Please import the SDK appropriate for your programming environment.
+
+#### For Android Studio
+
+Please implement the following settings to the target application's settings.gradle
+For the "File" parameter, designate the path to `"optimal_remote"` in the SDK directory. For example, `"C:\\Users\\username\\optimal_remote"` or
+`"/Users/username/optimal_remote"`.
+
+```
+include ':optimal_remote'
+project(':optimal_remote').projectDir = new File('[A path to the optimal_remote]')
+```
+
+Next, to add the SDK to the target application's dependent library, add the following code to "build.gradle"
+
+```
+dependencies {
+    compile project(':optimal_remote')
+}
+```
+
+The element with the SDK AndroidManifest.xml will conflict with the target application. The following edits are necessary.
+
+##### How to edit the SDK AndroidManifest.xml
+
+Delete the `android:theme` element and the `android:allowBackup` element from the `AndroidManifest.xml` file in the optimal_remote directory.
+
+```
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="jp.co.optim.optimalremote"
+
+    ...
+
+    <application>
+    </application>
+
+</manifest>
+```
+
+##### How to edit the target application AndroidManifest.xml
+
+In the AndroidManifest.xml file for the target application, add `"xmlns:tools="http://schemas.android.com/tools"` to the `"manifest"` element, and `"tools:replace="android:theme,android:allowBackup"` to the `"application"` element.
+
+```
+<manifest package="com.example.your_app"
+          xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools">
+
+    ...
+
+    <application
+        tools:replace="android:theme,android:allowBackup"
+    ...
+/manifest>
+```
+
+#### For Eclipse
+The below is how to import optimal_remote project.
+Open "Import Projects" dialog by operating (File) -> (Import) -> (Android) -> (Existing Android Into Workspace) .
 Specify the directory which is checkout or expanded from a archiving file. Finally, click (Finish) button and finish importing.
 optimal_remote project contains as a set of a library file, layout files, string files and image files.
 
-### 3. Add optimal_remote project to your android app project
+Finally, add optimal_remote project to your android app project.
 Click (Properties) -> (Android) -> (Add...) ,select SDK directory and click OK button.
 
 ## Tutorials for using SDK

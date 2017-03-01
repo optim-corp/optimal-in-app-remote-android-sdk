@@ -74,3 +74,9 @@ public class MyApplication extends Application implements IORIASessionProvider {
 }
 
 ```
+
+## To capture TextureView
+
+`TextureView` capture is unvailable by default in the SDK. To enable capture, set the `"setCaptureTextureViewEnabled"` method to `"true."` To turn it off, set the method to `"false."`
+Enabling capture for `TextureView` may affect the performance of the application.
+The `"setCaptureTextureViewEnabled"` setting cannot be changed while conducting support. Confirm the setting before calling the `"open"` method of the `"ORIASession"` object.

@@ -18,3 +18,5 @@
  15. If `"ORIASession.resume"` is called one minute after `"ORIASession.pause"` is called, the connection confirmation dialog will be displayed.
  16. If calling `"ORIASession.pause"` interrupts the connection, calling `"ORIASession.shutdown"` will change `"ORIASession.canOpen"` to false.
  17. When an internet connection cannot be established, calling `"ORIASession.open"` will cause the "Connecting..." message to continue being displayed.
+ 18. The target application will terminate if it is disconnected from the internet while receiving remote support in the background.
+ 19. Cannot capture TextureView animation. The operator's side will be displayed without animation.
