@@ -7,12 +7,12 @@ Optimal In-App Remote SDK for Android は、 Android アプリの遠隔支援を
 
 ## 対象環境
   - SDK 動作環境
-    1. Android 2.3、 Android 4.0 〜 7.0
+    1. Android 4.0 〜 11.0
     2. 英語、日本語
       - デフォルト言語は英語です
     3. インターネットに接続できるネットワーク環境
   - 開発環境
-    - Android Studio または、[ADT(Android Developer Tools)](http://developer.android.com/tools/help/adt.html) 導入済み Eclipse
+    - Android Studio
 
 ## この SDK でできること
 
@@ -58,7 +58,7 @@ project(':optimal_remote').projectDir = new File('[optimal_remote ディレク�
 
 ```
 dependencies {
-    compile project(':optimal_remote')
+    api project(':optimal_remote')
 }
 ```
 
@@ -95,15 +95,8 @@ optimal_remote ディレクトリ中の `AndroidManifest.xml` に含まれる `a
     <application
         tools:replace="android:theme,android:allowBackup"
     ...
-/manifest>
+</manifest>
 ```
-
-#### Eclipse の場合
-インポートは、次の通りです。 (File) -> (Import) -> (Android) -> (Existing Android Into Workspace) で Import Projects ダイアログを開きます。(Browse...) で先ほど取得または展開したディレクトリを指定してください。次に (Finish) を押すとインポートが完了します。
-SDK には、ライブラリファイル、レイアウトファイル、文字列ファイルと画像ファイルが含まれています。
-
-最後に、SDK を対象のアプリケーションに関連付けしてください。
-関連付けるには、対象のアプリケーションを右クリック、 (Properties) -> (Android) -> (Add...) で SDK ディレクトリを選択し、OK ボタンを押してください。
 
 ## SDK を利用するためのチュートリアル
 
@@ -123,13 +116,17 @@ SDK には、ライブラリファイル、レイアウトファイル、文字�
   <uses-permission android:name="android.permission.RECORD_AUDIO" />
   ...
 
-  <!-- 3. ORIASession を取得するために android:name 属性を次のように設定してください -->
+  <!-- 3. ORIASession を取得するために android:name 属性を次のように設定してください。 -->
   <application
     android:name="jp.co.optim.optimalremote.ORIAApplication"
     ...
-
+  >
     <!--
-    4. アクティビティに対して android:configChanges 属性を次のように設定してください。
+    4. オペレーターとの通信のために application の中に次の uses-library タグを追加してください。
+     -->
+    <uses-library android:name="org.apache.http.legacy" android:required="false"/>
+    <!--
+    5. アクティビティに対して android:configChanges 属性を次のように設定してください。
     設定していない場合は、画面回転時に SDK 側から表示されていたダイアログが非表示になります。
      -->
     <activity
@@ -145,26 +142,26 @@ SDK には、ライブラリファイル、レイアウトファイル、文字�
 
 ```MainActivity.java
 ...
-// 5. SDK を利用するために、それぞれインポートします。
+// 6. SDK を利用するために、それぞれインポートします。
 import jp.co.optim.optimalremote.ORIAApplication;
 import jp.co.optim.optimalremote.ORIASession;
 import jp.co.optim.optimalremote.IORIASessionCallback;
 ...
 
 public class MainActivity extends Activity implements IORIASessionCallback, OnClickListener {
-  // 6. ORIASession クラスをメンバーに追加します。
+  // 7. ORIASession クラスをメンバーに追加します。
   private ORIASession mSession = null;
-  // 7. オペレーター接続開始用のボタンをメンバーに追加します。
+  // 8. オペレーター接続開始用のボタンをメンバーに追加します。
   private Button mButtonHelp = null;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
-    // 8. プロファイルを貼り付けます。
+    // 9. プロファイルを貼り付けます。
     String PROFILE = "XXXXXXXX";
-    // 9. キーを貼り付けます。
+    // 10. キーを貼り付けます。
     String KEY = "XXXXXXXX";
 
-    // 10. オペレーターとの接続準備を行います。　
+    // 11. オペレーターとの接続準備を行います。　
     ORIAApplication app = (ORIAApplication) getApplication();
     try {
       app.initSession(getApplicationContext(), PROFILE, KEY);
@@ -176,19 +173,19 @@ public class MainActivity extends Activity implements IORIASessionCallback, OnCl
       finish();
     }
 
-    // 11. ORIASession インスタンスを取得します。
+    // 12. ORIASession インスタンスを取得します。
     mSession = app.getSession();
-    // 12. 接続の開始イベントと終了イベントのイベントリスナーを設定します。
+    // 13. 接続の開始イベントと終了イベントのイベントリスナーを設定します。
     mSession.setSessionCallback(this, new Handler());
-    // 13. VoIP を有効にする (既定では false)
+    // 14. VoIP を有効にする (既定では false)
     mSession.setVoiceChatEnabled(true);
 
-    // 14. 接続開始ボタンにイベントリスナーを設定します。
+    // 15. 接続開始ボタンにイベントリスナーを設定します。
     mButtonHelp = (Button) findViewById(R.id.button_help);
     mButtonHelp.setOnClickListener(this);
   }
 
-  // 15. ボタンクリック時にオペレーターとの接続を開始します。
+  // 16. ボタンクリック時にオペレーターとの接続を開始します。
   @Override
   public void onClick(View v) {
     if (v.getId() == R.id.button_help){

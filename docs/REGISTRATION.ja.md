@@ -1,17 +1,17 @@
 ﻿# OPTiM 開発者登録 / SDK利用アプリ用プロファイル・キー情報およびオペレーターツールの入手方法
 
 In App Remote SDK利用のアプリ開発には、オプティムに開発登録が必要です。これは画面共有を行うオペレーターツールとの接続情報を発行するためです。
- 1. 開発登録は、以下の「オプティム開発登録フォーム」の各項目にご記入、使用許諾規約をご確認・ご同意のうえメールにてリクエストを [developer@optim.co.jp]developer@optim.co.jp にご送信ください。
+ 1. 開発登録は、以下の「オプティム開発登録フォーム」の各項目にご記入、使用許諾規約をご確認・ご同意のうえメールにてリクエストを （[developer@optim.co.jp](developer@optim.co.jp)） にご送信ください。
  2. ご登録後、オプティムからSDK利用アプリのための以下の情報、ツールをご提供いたします:
      - オペレーターツールでのアプリ識別のためのプロファイル・キー情報
      - オプティム Optimal Remote オペレーターツール（Windows 版）の入手URL情報
      - Optimal Remote オペレーターツール を使用するためのログイン情報（開発用途のみに使用可能）
 
-また、複数のアプリを作成する場合は、上記初回登録と同様に「追加アプリ プロファイル・キー情報リクエストフォーム」を使用して追加リクエストを[developer@optim.co.jp]developer@optim.co.jp にご送信ください。
+また、複数のアプリを作成する場合は、上記初回登録と同様に「追加アプリ プロファイル・キー情報リクエストフォーム」を使用して追加リクエストを（[developer@optim.co.jp](developer@optim.co.jp)） にご送信ください。
 
 アプリ開発・検証が完了し、Optimal Remote の機能を商用利用する場合、Optimal Remote オペレーターツールの使用契約が必要となります。
-Optimal Remote の詳細については製品ページ（http://www.optim.co.jp/products-detail/price/99）でご確認できます。
-契約申し込みはお問い合わせ[https://www.optim.co.jp/contact]（https://www.optim.co.jp/contact）にてご連絡ください。
+Optimal Remote の詳細については製品ページ（[http://www.optim.co.jp/products-detail/price/99](http://www.optim.co.jp/products-detail/price/99)）でご確認できます。
+契約申し込みはお問い合わせ（[https://www.optim.co.jp/contact](https://www.optim.co.jp/contact)）にてご連絡ください。
 
 
 ## オプティム開発登録フォーム

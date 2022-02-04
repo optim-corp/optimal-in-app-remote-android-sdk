@@ -9,12 +9,12 @@ This documentation in Japanese is here: [日本語ドキュメント](README.ja.
 
 ##Operating environment
  - Operating Environment for app
-     1. Android 2.3, Android 4.0 - 7.0
+     1. Android 4.0 - 11.0
      2. English / Japanese environment
          - The default language is English.
      3. Access to the Internet is required.
  - Required development environment
-     - Android Studio or Eclipse with [ADT(Android Developer Tools)](http://developer.android.com/tools/help/adt.html)
+     - Android Studio
 
 ## SDK features
 
@@ -64,7 +64,7 @@ Next, to add the SDK to the target application's dependent library, add the foll
 
 ```
 dependencies {
-    compile project(':optimal_remote')
+    api project(':optimal_remote')
 }
 ```
 
@@ -100,17 +100,8 @@ In the AndroidManifest.xml file for the target application, add `"xmlns:tools="h
     <application
         tools:replace="android:theme,android:allowBackup"
     ...
-/manifest>
+</manifest>
 ```
-
-#### For Eclipse
-The below is how to import optimal_remote project.
-Open "Import Projects" dialog by operating (File) -> (Import) -> (Android) -> (Existing Android Into Workspace) .
-Specify the directory which is checkout or expanded from a archiving file. Finally, click (Finish) button and finish importing.
-optimal_remote project contains as a set of a library file, layout files, string files and image files.
-
-Finally, add optimal_remote project to your android app project.
-Click (Properties) -> (Android) -> (Add...) ,select SDK directory and click OK button.
 
 ## Tutorials for using SDK
 Following describes sets of codes frequently used in apps utilizing this SDK.
@@ -135,9 +126,13 @@ Config use permissions of using network and microphone. And set `jp.co.optim.opt
   <application
     android:name="jp.co.optim.optimalremote.ORIAApplication"
     ...
-
+  >
     <!--
-    4. Set android:configChanges as below value in each activity.
+    4. Add the following uses-library tag in the application to communicate with the operator.
+     -->
+    <uses-library android:name="org.apache.http.legacy" android:required="false"/>
+    <!--
+    5. Set android:configChanges as below value in each activity.
     If not, a dialog from SDK will be disappeared when rotating screen.
     -->
     <activity
@@ -155,26 +150,26 @@ At first, initialize remote assistance in `onCreate` method of `MainActivity`. N
 
 ```MainActivity.java
 ...
-// 5. Import these for using SDK.
+// 6. Import these for using SDK.
 import jp.co.optim.optimalremote.ORIAApplication;
 import jp.co.optim.optimalremote.ORIASession;
 import jp.co.optim.optimalremote.IORIASessionCallback;
 ...
 
 public class MainActivity extends Activity implements IORIASessionCallback, OnClickListener {
-  // 6. Add a ORIASession member value.
+  // 7. Add a ORIASession member value.
   private ORIASession mSession = null;
-  // 7. Add a Button member for starting remote assistance.
+  // 8. Add a Button member for starting remote assistance.
   private Button mButtonHelp = null;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
-    // 8. Copy and paste the content of ".profile" to replace "XXXXXXXX" below:
+    // 9. Copy and paste the content of ".profile" to replace "XXXXXXXX" below:
     String PROFILE = "XXXXXXXX";
-    // 9. Copy and paste the content of ".key" to replace "XXXXXXXX" below:
+    // 10. Copy and paste the content of ".key" to replace "XXXXXXXX" below:
     String KEY = "XXXXXXXX";
 
-    // 10. Initialize connecting to operator.
+    // 11. Initialize connecting to operator.
     ORIAApplication app = (ORIAApplication) getApplication();
     try {
       app.initSession(getApplicationContext(), PROFILE, KEY);
@@ -186,19 +181,19 @@ public class MainActivity extends Activity implements IORIASessionCallback, OnCl
       finish();
     }
 
-    // 11. Get an ORIASessioan instance.
+    // 12. Get an ORIASessioan instance.
     mSession = app.getSession();
-    // 12. Set an event listener of beginning remote assistance event and ending.
+    // 13. Set an event listener of beginning remote assistance event and ending.
     mSession.setSessionCallback(this, new Handler());
-    // 13. Enable VoIP (default: false)
+    // 14. Enable VoIP (default: false)
     mSession.setVoiceChatEnabled(true);
 
-    // 14. Set a click event listener.
+    // 15. Set a click event listener.
     mButtonHelp = (Button) findViewById(R.id.button_help);
     mButtonHelp.setOnClickListener(this);
   }
 
-  // 15. Start remote assistance when clicked.
+  // 16. Start remote assistance when clicked.
   @Override
   public void onClick(View v) {
     if (v.getId() == R.id.button_help){
