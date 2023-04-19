@@ -20,3 +20,6 @@
  17. When an internet connection cannot be established, calling `"ORIASession.open"` will cause the "Connecting..." message to continue being displayed.
  18. The target application will terminate if it is disconnected from the internet while receiving remote support in the background.
  19. Cannot capture TextureView animation. The operator's side will be displayed without animation.
+ 20. On Android 13 or later, remote control doesn't work due to OS limitations.
+ 21. When you publish app on Google Play Store, [a warning about vulnerability of WebRTC](https://support.google.com/faqs/answer/12577537) will be displayed on Google Play Console.
+   - This library is not affected by the vulnerability because the feature has vulnerability is unused in it.
