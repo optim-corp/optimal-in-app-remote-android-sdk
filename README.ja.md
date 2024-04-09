@@ -197,6 +197,14 @@ class MainActivity : Activity(), IORIASessionCallback, View.OnClickListener {
         mButtonHelp?.isEnabled = true
     }
 
+    override fun onRequestPermissionsResult(
+            requestCode: Int, permissions: Array<String>, grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        // 16. VoIPを有効にしている場合は次のメソッドを呼び出してください。
+        mSession?.onRequestPermissionsResult(requestCode, permissions, grantResults)
+    }
+
 // ...
 }
 ```
@@ -269,6 +277,15 @@ public class MainActivity extends Activity implements IORIASessionCallback, OnCl
     @Override
     public void onComplete() {
         mButtonHelp.setEnabled(true);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(
+        int requestCode, String[] permissions, int[] grantResults
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        // 16. VoIPを有効にしている場合は次のメソッドを呼び出してください。
+        mSession.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
 // ...
