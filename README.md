@@ -1,63 +1,63 @@
-# Optimal In-App Remote SDK for Android
+[README in English](./README.en.md)
 
-"Optimal In-App Remote SDK for Android" is a developer kit that provides remote assistance features for your Android app.
-By incorporating this SDK into your Android application, you can provide remote assistance for your app using [Optimal Remote](https://www.optim.com/products-detail/top/40).
+# Optimal In-App Remote for Android
 
-[iOS version is also available on GitHub.](https://github.com/optim-corp/optimal-in-app-remote-ios-sdk)
+Optimal In-App Remote SDK for Android は、 Android アプリの遠隔支援を実現するための開発キットです。
+この SDK をアプリに組み込むことで、そのアプリを [Optimal Remote](http://www.optim.co.jp/products-detail/top/40) で遠隔支援できるようになります。
 
-This documentation in Japanese is here: [日本語ドキュメント](README.ja.md)
+[iOS 版もあります。](https://github.com/optim-corp/optimal-in-app-remote-ios-sdk)
 
-## Operating environment
+## 対象環境
 
-- Operating Environment for app
-  1.  Android 5.0 - 14.0
-  2.  English / Japanese environment
-      - The default language is English.
-  3.  Access to the Internet is required.
-- Required development environment
+- SDK 動作環境
+  1. Android 5.0 〜 14.0
+  2. 英語、日本語
+  - デフォルト言語は英語です
+  3. インターネットに接続できるネットワーク環境
+- 開発環境
   - Android Studio
 
-## SDK features
+## この SDK でできること
 
-### Screen sharing
+### 画面共有機能
 
-SDK allows real-time sharing of your app's screen.
+SDK を組み込んだアプリの画面をオペレーターがリアルタイムに閲覧できます。
 
-### Remote control feature
+### 遠隔操作機能
 
-SDK allows your app to be operated by remote operators (help desks, customer support team, etc.).
+SDK を組み込んだアプリをオペレーターが操作できます。
 
-### Highlighting
+### 赤ペン機能
 
-SDK allows remote operators to highlight and draw on the screen using a red marker, providing more efficient instructions to users.
+SDK を組み込んだアプリの画面にオペレーターが赤ペンで書き込むことでユーザーに操作を指示することができます。
 
-### Finger indicator
+### 指さし機能
 
-SDK also allows remote operators to point to the specific area of the screen using a finger icon.
+SDK を組み込んだアプリの画面にオペレーターから指マークを表示することでユーザーに操作を指示することができます。
 
-### Voice calls
+### 音声通話機能
 
-SDK also provides VoIP voice calls between app user and remote operator for easier support.
+オペレーターがユーザーと VoIP で音声通話しながら遠隔支援を効果的に実施することができます。
 
-## Incorporating SDK to your project
+## SDK をプロジェクトに導入する
 
-Before starting with the procedure below, register as a developer and make sure you have all the requirements listed below:
+以下の手順を進める前に、開発者登録をしていただき以下をご用意ください。
 
-[Please refer here for the detail request steps.](docs/REGISTRATION.md)
+[詳しい手順はこちらを参照してください。](docs/REGISTRATION.md)
 
-1.  Profile and key pair required for SDK
-2.  Optimal Remote Operator Tool (for Windows)
-3.  User account (user ID and password) for using Optimal Remote Operator Tool
+1. SDK を利用するためのプロファイル・キーペア
+2. オペレーターツール (Windows 版)
+3. オペレーターツールを利用するためのアカウント (ID・パスワード)
 
-### 1. Checkout this git repository
+### 1. この Git リポジトリをチェックアウトしてください
 
-When downloaded as a archiving file, expand it.
+Git でチェックアウトしてください。アーカイブファイルとしてダウンロードする場合は、展開してください。
 
-### 2. Import the SDK
+### 2. SDK をインポートしてください
 
-#### Adding SDK to the dependent library
+#### 依存ライブラリに SDK を追加します
 
-To add the SDK to the target application's dependent library, please add the following code to "build.gradle"
+対象アプリケーションに SDK 及びその依存ライブラリを追加するために、 build.gradle へ次のコードを追記します。
 
 ```gradle
 dependencies {
@@ -66,12 +66,11 @@ dependencies {
 }
 ```
 
+##### AndroidManifest.xml の設定をします
 
-#### Modify the SDK AndroidManifest.xml
+SDK の AndroidManifest.xml に含まれる要素が、対象アプリケーションと競合する場合がありますので、対処が必要です。
 
-The element with the SDK AndroidManifest.xml may conflict with the target application. In that case, the following edits are necessary.
-
-In the AndroidManifest.xml file for the target application, add `xmlns:tools="http://schemas.android.com/tools` to the `manifest` element, and `tools:replace="android:theme,android:allowBackup` to the `application` element.
+対象アプリケーションの AndroidManifest.xml へ、 `xmlns:tools="http://schemas.android.com/tools"` 属性を `manifest` 要素へ、`tools:replace="android:theme,android:allowBackup"` 属性を `application` 要素へ追記してください。
 
 ```xml
 <manifest package="com.example.your_app"
@@ -86,44 +85,43 @@ In the AndroidManifest.xml file for the target application, add `xmlns:tools="ht
 </manifest>
 ```
 
-#### Modify for obfuscation
+#### 難読化の設定をします
 
-If obfuscation of the project is enabled, please add the following codes to the settings file of Proguard.
+難読化を有効にしているプロジェクトの場合は、 Proguard の設定ファイルに以下の内容を追記してください。
+
 ```
 -keep class jp.co.optim.** { *; }
 -keep class org.webrtc.** { *; }
 ```
 
-## Tutorials for using SDK
+## SDK を利用するためのチュートリアル
 
-Following describes sets of codes frequently used in apps utilizing this SDK.
+### 1. AndroidManifest.xml の設定を行います
 
-### 1. Modify AndroidManifest.xml
-
-Config use permissions of using network and microphone. And set `jp.co.optim.optimalremote.ORIAApplication` value with `android:name` attribute of application element.
-`ORIASession` instance is gettable from `jp.co.optim.optimalremote.ORIAApplication` inheriting `android.app.Application` class.
+ネットワーク及びマイクの使用権限の設定します。また、`jp.co.optim.optimalremote.ORIAApplication` を application 要素の android:name 　属性に設定してください。
+オペレーターとの接続を管理する ORIASession インスタンスは `android.app.Application` クラスを継承した `jp.co.optim.optimalremote.ORIAApplication` から取得します。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-...
-  <!-- 1. For connect to operator. -->
+  ...
+  <!-- 1. オペレーターとの接続に使用します。 -->
   <uses-permission android:name="android.permission.INTERNET" />
 
-  <!-- 2. For enabling VoIP -->
+  <!-- 2. VoIP 機能を有効にするために使用します。 -->
   <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
   <uses-permission android:name="android.permission.RECORD_AUDIO" />
   ...
 
-  <!-- 3. Set android:name as the below value. -->
+  <!-- 3. ORIASession を取得するために android:name 属性を次のように設定してください。 -->
   <application
     android:name="jp.co.optim.optimalremote.ORIAApplication"
     ...
   >
     <!--
-    4. Set android:configChanges as below value in each activity.
-    If not, a dialog from SDK will be disappeared when rotating screen.
-    -->
+    4. アクティビティに対して android:configChanges 属性を次のように設定してください。
+    設定していない場合は、画面回転時に SDK 側から表示されていたダイアログが非表示になります。
+     -->
     <activity
       android:configChanges="orientation|screenSize"
       ...
@@ -133,35 +131,34 @@ Config use permissions of using network and microphone. And set `jp.co.optim.opt
 </manifest>
 ```
 
-### 2. Start remote assistance when clicking button
+### 2. ボタンをクリックするオペレーターとの接続を開始させます
 
-This example shows how to implement starting remote assistance when clicking button.
-At first, initialize remote assistance in `onCreate` method of `MainActivity`. Next, implement a button starts remote assistance by clicking.
+ここでは、ボタンをクリックするとオペレーターとの接続を開始する例を示します。 初めに、`MainActivity` の `onCreate` メソッド中で接続準備を行います。次に、ボタンをクリックするとオペレーターとの接続を開始するコードを実装します。
 
 <details open>
 <summary>Kotlin</summary>
 
 ```kotlin
 // ...
-// 5. Import these for using SDK.
+// 5. SDK を利用するために、それぞれインポートします。
 import jp.co.optim.optimalremote.IORIASessionCallback
 import jp.co.optim.optimalremote.ORIAApplication
 import jp.co.optim.optimalremote.ORIASession
 // ...
 
 class MainActivity : Activity(), IORIASessionCallback, View.OnClickListener {
-    // 6. Add a ORIASession member value.
+    // 6. ORIASession クラスをメンバーに追加します。
     private var mSession: ORIASession? = null
-    // 7. Add a Button member for starting remote assistance.
+    // 7. オペレーター接続開始用のボタンをメンバーに追加します。
     private var mButtonHelp: Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        // 8. Copy and paste the content of ".profile" to replace "XXXXXXXX" below:
+        // 8. プロファイルを貼り付けます。
         val PROFILE = "XXXXXXXX"
-        // 9. Copy and paste the content of ".key" to replace "XXXXXXXX" below:
+        // 9. キーを貼り付けます。
         val KEY = "XXXXXXXX"
 
-        // 10. Initialize connecting to operator.
+        // 10. オペレーターとの接続準備を行います。
         val app = application as ORIAApplication
         try {
             app.initSession(applicationContext, PROFILE, KEY)
@@ -173,33 +170,41 @@ class MainActivity : Activity(), IORIASessionCallback, View.OnClickListener {
             finish()
         }
 
-        // 11. Get an ORIASession instance.
+        // 11. ORIASession インスタンスを取得します。
         mSession = app.session
-        // 12. Set an event listener of beginning remote assistance event and ending.
+        // 12. 接続の開始イベントと終了イベントのイベントリスナーを設定します。
         mSession?.setSessionCallback(this, Handler(mainLooper))
-        // 13. Enable VoIP (default: false)
+        // 13. VoIP を有効にする (既定では false)
         mSession?.setVoiceChatEnabled(true)
 
-        // 14. Set a click event listener.
+        // 14. 接続開始ボタンにイベントリスナーを設定します。
         mButtonHelp = findViewById(R.id.button_help) as Button
         mButtonHelp.setOnClickListener(this)
     }
 
-    // 15. Start remote assistance when clicked.
+    // 15. ボタンクリック時にオペレーターとの接続を開始します。
     override fun onClick(v: View) {
         if (v.id == R.id.button_help) {
             mSession?.open()
         }
     }
 
-    // Disable the button. This method will be called when starting remote assistance.
+    // オペレーターとの接続処理を開始した時に呼び出されます。ボタンを無効にします。
     override fun onOpen() {
         mButtonHelp?.isEnabled = false
     }
 
-    // Enable the button. This method will be called when finishing remote assistance.
+    // オペレーターとの接続が終了した時に呼び出されます。ボタンを有効にします。
     override fun onComplete() {
         mButtonHelp?.isEnabled = true
+    }
+
+    override fun onRequestPermissionsResult(
+            requestCode: Int, permissions: Array<String>, grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        // 16. VoIPを有効にしている場合は次のメソッドを呼び出してください。
+        mSession?.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 
 // ...
@@ -213,27 +218,26 @@ class MainActivity : Activity(), IORIASessionCallback, View.OnClickListener {
 
 ```java
 // ...
-
-// 5. Import these for using SDK.
+// 5. SDK を利用するために、それぞれインポートします。
 import jp.co.optim.optimalremote.ORIAApplication;
 import jp.co.optim.optimalremote.ORIASession;
 import jp.co.optim.optimalremote.IORIASessionCallback;
 // ...
 
 public class MainActivity extends Activity implements IORIASessionCallback, OnClickListener {
-  // 6. Add a ORIASession member value.
+    // 6. ORIASession クラスをメンバーに追加します。
     private ORIASession mSession = null;
-    // 7. Add a Button member for starting remote assistance.
+    // 7. オペレーター接続開始用のボタンをメンバーに追加します。
     private Button mButtonHelp = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // 8. Copy and paste the content of ".profile" to replace "XXXXXXXX" below:
+        // 8. プロファイルを貼り付けます。
         String PROFILE = "XXXXXXXX";
-        // 9. Copy and paste the content of ".key" to replace "XXXXXXXX" below:
+        // 9. キーを貼り付けます。
         String KEY = "XXXXXXXX";
 
-        // 10. Initialize connecting to operator. 
+        // 10. オペレーターとの接続準備を行います。　
         ORIAApplication app = (ORIAApplication) getApplication();
         try {
             app.initSession(getApplicationContext(), PROFILE, KEY);
@@ -245,38 +249,46 @@ public class MainActivity extends Activity implements IORIASessionCallback, OnCl
             finish();
         }
 
-        // 11. Get an ORIASession instance.
+        // 11. ORIASession インスタンスを取得します。
         mSession = app.getSession();
-        // 12. Set an event listener of beginning remote assistance event and ending.
+        // 12. 接続の開始イベントと終了イベントのイベントリスナーを設定します。
         mSession.setSessionCallback(this, new Handler());
-        // 13. Enable VoIP (default: false)
+        // 13. VoIP を有効にする (既定では false)
         mSession.setVoiceChatEnabled(true);
 
-        // 14. Set a click event listener.
+        // 14. 接続開始ボタンにイベントリスナーを設定します。
         mButtonHelp = (Button) findViewById(R.id.button_help);
         mButtonHelp.setOnClickListener(this);
     }
 
-
-    // 15. Start remote assistance when clicked.
+    // 15. ボタンクリック時にオペレーターとの接続を開始します。
     @Override
     public void onClick(View v) {
-      if (v.getId() == R.id.button_help){
-        mSession.open();
-      }
+        if (v.getId() == R.id.button_help){
+            mSession.open();
+        }
     }
 
-  // Disable the button. This method will be called when starting remote assistance.
-  @Override
-  public void onOpen() {
-    mButtonHelp.setEnabled(false);
-  }
+    // オペレーターとの接続処理を開始した時に呼び出されます。ボタンを無効にします。
+    @Override
+    public void onOpen() {
+        mButtonHelp.setEnabled(false);
+    }
 
-  // Enable the button. This method will be called when finishing remote assistance.
-  @Override
-  public void onComplete() {
-    mButtonHelp.setEnabled(true);
-  }
+    // オペレーターとの接続が終了した時に呼び出されます。ボタンを有効にします。
+    @Override
+    public void onComplete() {
+        mButtonHelp.setEnabled(true);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(
+        int requestCode, String[] permissions, int[] grantResults
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        // 16. VoIPを有効にしている場合は次のメソッドを呼び出してください。
+        mSession.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
 
 // ...
 }
@@ -284,8 +296,8 @@ public class MainActivity extends Activity implements IORIASessionCallback, OnCl
 
 </details>
 
-### 3. Connecting to the Operator Tool
+### 3. オペレーターツールと接続する
 
-After building your app, run the app from the device with access to the Internet. Tap the button to display "Receipt Number". Enter this Receipt Number from Operator Tool. Operator Tool and App is connected and app screen is displayed on Operator Tool. Now you are ready to go!
+アプリをビルドしたら、インターネットに接続された端末でアプリを実行し、ボタンをクリックすると「受付番号」が表示されます。オペレーターツールでこの受付番号を入力すると、オペレーターツールとアプリが接続され、オペレーターツールにアプリの画面が表示されます！
 
-This completes the tutorial for SDK. Please contact us if you experience problems connecting to the Operator Tool.
+以上でチュートリアルは完了です。うまくオペレーターツールと接続できない場合、お問い合わせください。
