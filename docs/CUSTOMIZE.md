@@ -1,49 +1,50 @@
-# Customizing "Optimal In-App Remote SDK for Android" apps
+# Optimal In-App Remote SDK for Android アプリのカスタマイズ
 
-### Remote control feature
-Remote control from the remote operators is enabled by default.
+## 遠隔操作機能
 
-With the default setting, when the remote control is requested from the operator, a dialog is displayed and asks user whether to allow remote control. According to user's choices, following actions take place.
+オペレーターから遠隔操作を要求された場合、既定ではそれを許可するかどうかのダイアログが表示され、ユーザーの選択結果に応じて以下のように振る舞います。
 
- - When "Allow" is selected
-     - Operators are allowed to remotely control the device.
-     - When the operator requests remote control access again, it is accepted automatically without dialog.
- - When "Allow(Only once)" is selected
-     - Operators are allowed to remotely control the device.
-     - When the operator requests remote control access again, dialog is displayed.
- - When "Deny" is selected
-     - Operator is not allowed to remotely control the device.
-     - When the operator requests remote control access again, dialog is displayed.
+- 「許可」を選択した場合
+  - オペレーターからの遠隔操作を受け入れるようになります
+  - 再度遠隔操作を要求した場合、自動的に遠隔操作を受け入れます
+- 「許可 (今回のみ)」を選択した場合
+  - オペレーターからの遠隔操作を受け入れるようになります
+  - 再度遠隔操作を要求した場合、ダイアログが表示されます
+- 「拒否」を選択した場合
+  - オペレーターからの遠隔操作を受け入れません
+  - 再度遠隔操作を要求した場合、ダイアログが表示されます
 
-### Disabling remote control
-If remote control operation from remote operators need to be disabled, call "setRemoteInputEnabled" method with "false" argument immediately after creating "ORIASession" class instance.
-When the argument is set to "false", no dialog prompting for permission is displayed and no remote operation will be executed.
+### 遠隔操作機能を無効化する
 
-### Allowing remote control operation automatically without permission dialog
-If remote control operation from remote operator needs to be allowed without permission dialog, call "setRemoteInputAcceptsAutomaticallyEnabled" with "true" argument immediately after creating "ORIASession" class instance. When the property is set to "YES", no dialog prompting for permission is displayed and remote operation will be allowed automatically.
+オペレーターからの遠隔操作を無効にしたい場合、`ORIASession` クラスのインスタンスを生成した直後に `setRemoteInputEnabled` メソッドで引数に `false` を渡してください。`false` にすると、遠隔操作を許可するかどうかのダイアログは表示されず、遠隔操作も実行されません。
 
-### Voice call feature
-Voice call with remote operators is disabled by default.
+### 遠隔操作機能をダイアログなしで自動的に許可する
 
-When voice call with remote operators is enabled, voice call session will start when the remote operator requests for voice call.
+オペレーターからの遠隔操作をダイアログなしで自動的に許可したい場合、`ORIASession` クラスのインスタンスを生成した直後に `setRemoteInputAcceptsAutomaticallyEnabled` メソッドで引数を `true` を渡してください。 `true` にすると、遠隔操作を許可するかどうかのダイアログは表示されず、自動的に遠隔操作が許可されます。
 
-Icon is displayed during the voice call. Tapping icon displays a menu, which provides users with following options.
+## 音声通話機能
 
- - Option to output audio from the speakers (Hands free mode)
- − Option to mute the microphone
+既定では、オペレーターとの音声通話が無効になっています。
 
-### Enabling voice call
-If voice call with remote operator needs to be allowed, call "setVoiceChatEnabled" with "true" argument immediately after creating "ORIASession" class instance.
+オペレーターとの音声通話が有効になっている場合、オペレーターから音声通話を要求されると音声通話を開始します。
 
-### Use not ORIAApplication class but the other class inheriting with Application class
-`ORIAApplication` inheriting with `android.app.Application` has one `ORIASession` instance for controlling the instance.
-However, there is a limitation that Android application contains only one `android.app.Application` instance.
-SDK provides an alternative method in case using other `android.app.Application` inherit class.
+ユーザーは、オペレーターとの接続中に表示されるアイコンをタップすると開くメニューから、必要に応じて以下を調整できます。
 
-The following example is using a `MyApplication` class inheriting with `android.app.Application`.
+- スピーカーから音声を出力するようにするかどうか (ハンズフリー)
+  − マイクをミュートするかどうか
+
+### 音声通話機能を有効化する
+
+オペレーターとの音声通話を有効にしたい場合、`ORIASession` クラスのインスタンスを作成した直後に `setVoiceChatEnabled` メソッドで引数に `true` を渡してください。
+
+### ORIAApplication クラスではなく他の Application 継承クラスを利用する
+
+`ORIAApplication` は、 `android.app.Application` クラスを継承しているため、同じく `android.app.Application` クラスを継承したクラスを利用したい場合は、下記の方法で対応可能です。
+
+ここでは、 `android.app.Application` クラスを継承した `MyApplication` クラスを利用する例を示します。
 
 ```MyApplication.java
-// 1. Import these classes.
+// 1. SDK を利用するために、それぞれインポートします。
 import jp.co.optim.optimalremote.IORIASessionProvider;
 import jp.co.optim.optimalremote.ORIASession;
 import jp.co.optim.optimalremote.ORIASessionProvider;
@@ -51,22 +52,22 @@ import android.app.Application;
 import android.content.Context;
 ...
 
-// 2. Implement IORIASessionProvider.
+// 2. IORIASessionProvider を実装します。
 public class MyApplication extends Application implements IORIASessionProvider {
-  // 3. ORIASessionProvider implementation is same as ORIAApplication.
+  // 3. ORIAApplication の実装部は ORIASessionProvider と同じため、これを利用します。
   private final ORIASessionProvider mSessionProvider = new ORIASessionProvider();
 
   ...
 
   @Override
   public void initSession(Context context, String profile, String key) {
-    // 4. Initialize connecting to operator.
+    // 4. オペレータとの接続準備を行います。
     mSessionProvider.initSession(context, profile, key);
   }
 
   @Override
   public ORIASession getSession() {
-    // 5. Return ORIASession instance.
+    // 5. ORIASession インスタンスを取得します。
     return mSessionProvider.getSession();
   }
 
@@ -75,8 +76,9 @@ public class MyApplication extends Application implements IORIASessionProvider {
 
 ```
 
-## To capture TextureView
+## TextureView をキャプチャする
 
-`TextureView` capture is unvailable by default in the SDK. To enable capture, set the `"setCaptureTextureViewEnabled"` method to `"true."` To turn it off, set the method to `"false."`
-Enabling capture for `TextureView` may affect the performance of the application.
-The `"setCaptureTextureViewEnabled"` setting cannot be changed while conducting support. Confirm the setting before calling the `"open"` method of the `"ORIASession"` object.
+SDK は、既定値で `TextureView` のキャプチャを無効化しています。 `TextureView` のキャプチャを有効化するには、`ORIASession` オブジェクトの `setCaptureTextureViewEnabled` メソッドで引数に `true` を渡してください。
+無効化するには、 `false` を渡してください。
+`TextureView` のキャプチャを有効化すると、無効化した場合に比べてパフォーマンスに影響を及ぼす可能性がございます。
+`setCaptureTextureViewEnabled` の設定値は、サポート中に変更できません。 `ORIASession` オブジェクトの `open` メソッドを呼び出す前に設定してください。

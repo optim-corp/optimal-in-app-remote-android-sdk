@@ -1,25 +1,27 @@
-# Optimal In-App Remote SDK for Android: Limitations
+# Optimal In-App Remote SDK for Android の制約事項
 
-## Basic limitations
- 1. During showing a `Dialog`, the finger indicator and the red marker will not be shown in the foreground. But the Operator Tool can do remote controlling.
- 2. Screen sharing supports a `Dialog` but not the shadow of a `Dialog`.
- 3. Screen sharing does not support a software keyboard but operator can input characters by a keyboard.
- 4. Screen sharing does not support a `SurfaceView` or a `View` inheriting from it.
- 5. If `ORIASession.setRemoteInputEnabled` is called with `false`, remote controlling buttons ain the operation tool will be not gray out.
- 6. After reconnected, the remote controlling will not be enabled. In this case, enable the remote controlling again.
- 7. Remote controlling does not support out of the application area. (ex. Area of software keyboard, notification area.
- 8. This SDK works on the ARM architecture.
- 9. There are some devices which stop an application process when home button is pressed whether using this SDK or not.
- 10. Even if the [half-width characters/full-width characters] button is toggled on the operator tool side, the keyboard input method of the target application will not change.
- 11. For each device, right cliking while using the pointer finger will move the finger pointer to the upper left of the screen.
- 12. If the device is rotated while using the pointer finger, the finger pointer will move to the upper left of the screen.
- 13. When the remote control function is available, calling `"ORIASession.resume"` after calling `"ORIASession.pause"` will cause the remote control function to become disabled.
- 14. When the voice call microphone is disabled, calling `"ORIASession.resume"` after calling `"ORIASession.pause"` will cause the microphone to become available.
- 15. If `"ORIASession.resume"` is called one minute after `"ORIASession.pause"` is called, the connection confirmation dialog will be displayed.
- 16. If calling `"ORIASession.pause"` interrupts the connection, calling `"ORIASession.shutdown"` will change `"ORIASession.canOpen"` to false.
- 17. When an internet connection cannot be established, calling `"ORIASession.open"` will cause the "Connecting..." message to continue being displayed.
- 18. The target application will terminate if it is disconnected from the internet while receiving remote support in the background.
- 19. Cannot capture TextureView animation. The operator's side will be displayed without animation.
- 20. On Android 13 or later, remote control doesn't work due to OS limitations.
- 21. When you publish app on Google Play Store, [a warning about vulnerability of WebRTC](https://support.google.com/faqs/answer/12577537) will be displayed on Google Play Console.
-   - This library is not affected by the vulnerability because the feature has vulnerability is unused in it.
+## 基本的な制約事項
+
+1.  指差しと赤ペンは、Dialog に覆い隠されるため、前面に表示されません。ただし、オペレーターツールによるタップ操作は、可能です。
+2.  Dialog をキャプチャできますが、Dialog 領域外の透明色をキャプチャ画面に反映されません。
+3.  ソフトウェアキーボードをキャプチャできません。ただし、文字入力はオペレーターツールから可能です。
+4.  ソフトウェアキーボードや通知領域などの、組み込み対象アプリケーション領域外をタップ操作できません。
+5.  `ORIASession.setRemoteInputEnabled` に `false` を設定したとしても、オペレーターツールのリモート操作ボタンは、グレーアウトされません。
+6.  リモート操作中の回線切断後に、再接続を行うとリモート操作できません。その場合は、オペレーターツール側から再度リモート操作を有効にしてください。
+7.  SurfaceView または、これを継承した View は、キャプチャできません。オペレーターツールには、単色で塗りつぶされて表示されます。
+8.  ARM アーキテクチャ CPU 上のみ動作します。
+9.  一部の端末では、本 SDK のご使用に関わらず、ホームボタンを押すとアプリケーションプロセスを停止させる端末がございます。
+10. オペレータツール側で「半角/全角」キーを押しても、対象アプリケーションのキーボード入力方法を切り替えられません。
+11. 端末によっては、指差し中に右クリックすると、指さしマークが左上に移動します。
+12. 指差し中に画面を回転させると、指差しマークが、左上に移動します。
+13. 遠隔操作機能を有効にした状態で、 `ORIASession.pause` を呼び出した後に `ORIASession.resume` を呼び出すと、遠隔操作機能が無効になります。
+14. 音声通話機能のマイクを無効にした状態で、 `ORIASession.pause` を呼び出した後に `ORIASession.resume` を呼び出すと、マイクが有効になります。
+15. `ORIASession.pause` を呼び出してから 1 分ほど経過した後に、 `ORIASession.resume` を呼び出すと、接続確認ダイアログが表示されます。
+16. `ORIASession.pause` を呼び出して接続を中断した状態で、 `ORIASession.shutdown` を呼び出した場合 `ORIASession.canOpen` の戻り値は、`false` になります。
+17. インターネットに接続できない状態で、 `ORIASession.open` を呼び出すと、「接続しています・・・」と表示した状態を継続します。
+18. 対象アプリケーションを遠隔支援中にバックグラウンドにした状態で、インターネットから切断すると、対象アプリケーションが強制終了します。
+19. TextureView のアニメーションをキャプチャできません。オペレーターツール側には、アニメーションが反映されずに表示されます。
+20. Android13 以上の場合、OS の制約により遠隔操作機能は動作しません。
+21. Google Play Store からアプリを公開する場合、Google Play Console にて[WebRTC の脆弱性に関する警告](https://support.google.com/faqs/answer/12577537)が表示されます。
+
+- この警告については本ライブラリで使用していない機能に該当するため、脆弱性の影響はございません。
