@@ -15,4 +15,5 @@
 11. 音声通話機能のマイクを無効にした状態で、 サポート接続が切断された後に再接続するとマイクが有効になります。
 12. インターネットに接続できない状態で、 `ORIASession.open` を呼び出すと、「接続しています・・・」と表示した状態を継続します。
 13. TextureView のアニメーションをキャプチャできません。オペレーターツール側には、アニメーションが反映されずに表示されます。
-14. Android13 以上の場合、OS の制約により遠隔操作機能は動作しません。
+14. Android13 以上の場合、SDK 利用アプリの所属している Window タイプ「Application windows」上の View に対してのみ遠隔操作可能です。「Application windows」については下記のリンクをご参照ください。
+    - https://developer.android.com/reference/android/view/WindowManager.LayoutParams#type
