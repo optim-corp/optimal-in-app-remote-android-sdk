@@ -1,14 +1,15 @@
 apply plugin: 'com.android.library'
 
 android {
+    namespace "jp.co.optim.optimalremote"
     publishNonDefault true
-    compileSdkVersion 21
-    buildToolsVersion "25.0.2"
+    compileSdk 34
+    buildToolsVersion = "34.0.0"
     defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 21
-        versionCode 10
-        versionName "1.1.2.0"
+        minSdkVersion 21
+        targetSdk 34
+        versionCode 17
+        versionName "1.1.6.0"
     }
 
     buildTypes {
@@ -28,5 +29,5 @@ android {
 }
 
 dependencies {
-    api fileTree(dir: 'libs', include: ['*.jar'])
+    api fileTree(dir: 'libs', include: ['*.jar'], excludes: ['annotation-1.1.0.jar'])
 }
