@@ -43,7 +43,44 @@
 
 ここでは、 `android.app.Application` クラスを継承した `MyApplication` クラスを利用する例を示します。
 
-```MyApplication.java
+<details open>
+<summary>Kotlin</summary>
+
+```kotlin
+// 1. SDK を利用するために、それぞれインポートします。
+import jp.co.optim.optimalremote.IORIASessionProvider
+import jp.co.optim.optimalremote.ORIASession
+import jp.co.optim.optimalremote.ORIASessionProvider
+import android.app.Application
+import android.content.Context
+
+// 2. IORIASessionProvider を実装します。
+class MyApplication : Application(), IORIASessionProvider {
+    // 3. ORIAApplication の実装部は ORIASessionProvider と同じため、これを利用します。
+    private val mSessionProvider = ORIASessionProvider()
+
+    ...
+
+    override fun initSession(context: Context, profile: String, key: String) {
+          // 4. オペレータとの接続準備を行います。
+        mSessionProvider.initSession(context, profile, key)
+    }
+
+    // 5. ORIASession インスタンスを取得します。
+    override val session: ORIASession?
+        get() = mSessionProvider.session
+
+    ...
+}
+
+```
+
+</details>
+
+<details>
+<summary>Java</summary>
+
+```java
 // 1. SDK を利用するために、それぞれインポートします。
 import jp.co.optim.optimalremote.IORIASessionProvider;
 import jp.co.optim.optimalremote.ORIASession;
@@ -76,9 +113,47 @@ public class MyApplication extends Application implements IORIASessionProvider {
 
 ```
 
+</details>
+
 ## TextureView をキャプチャする
 
 SDK は、既定値で `TextureView` のキャプチャを無効化しています。 `TextureView` のキャプチャを有効化するには、`ORIASession` オブジェクトの `setCaptureTextureViewEnabled` メソッドで引数に `true` を渡してください。
 無効化するには、 `false` を渡してください。
 `TextureView` のキャプチャを有効化すると、無効化した場合に比べてパフォーマンスに影響を及ぼす可能性がございます。
 `setCaptureTextureViewEnabled` の設定値は、サポート中に変更できません。 `ORIASession` オブジェクトの `open` メソッドを呼び出す前に設定してください。
+
+## SDK 表示 の言語切り替え
+
+SDK が UI 上に表示している言語を切り替えるには以下のように`ORIASession`オブジェクトの`locale`プロパティを更新してください。
+
+<details open>
+<summary>Kotlin</summary>
+
+```kotlin
+// 英語に切り替える
+session.locale = Locale.EN
+
+// 日本語に切り替える
+session.locale = Locale.JA
+
+// 端末設定に従う
+session.locale = Locale.SYSTEM
+```
+
+</details>
+
+<details>
+<summary>Java</summary>
+
+```java
+// 英語に切り替える
+session.setLocale(Locale.EN);
+
+// 日本語に切り替える
+session.setLocale(Locale.JA);
+
+// 端末設定に従う
+session.setLocale(Locale.SYSTEM);
+```
+
+</details>

@@ -292,3 +292,14 @@ public class MainActivity extends Activity implements IORIASessionCallback, OnCl
 アプリをビルドしたら、インターネットに接続された端末でアプリを実行し、ボタンをクリックすると「受付番号」が表示されます。オペレーターツールでこの受付番号を入力すると、オペレーターツールとアプリが接続され、オペレーターツールにアプリの画面が表示されます！
 
 以上でチュートリアルは完了です。うまくオペレーターツールと接続できない場合、お問い合わせください。
+
+## 音声通話機能を使用しない場合
+
+上記の「依存ライブラリに SDK を追加します」にて、build.gradle へ次のコードを追記してください。
+
+```groovy
+dependencies {
+    implementation files("path/to/optimal_remote_no_voip.aar")
+    implementation "com.squareup.okhttp3:okhttp:4.11.0"
+}
+```

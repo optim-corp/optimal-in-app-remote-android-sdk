@@ -2,6 +2,24 @@
 
 このプロジェクトに対するすべての重要な変更は、このファイルに文書化されます。
 
+## [2.0.3] - 2024-12-18
+
+### Changed
+
+- 音声通話機能を除いた SDK（[optimal_remote_no_voip.aar](./optimal_remote/optimal_remote_no_voip.aar)）を追加しました。
+
+> [!NOTE]
+> optimal_remote_no_voip.aar は音声通話機能に関するモジュールを除いていますが、その他の機能に差分はありません。
+
+- SDK が UI 上に表示している言語を切り替える API として`ORIASession.locale`を追加しました。
+
+> [!NOTE]
+> SDK の表示言語切り替えの詳細は[CUSTOMIZE.md](./docs/CUSTOMIZE.md)をご参照ください。
+
+### Fixed
+
+- TextureView のキャプチャを有効にした場合に、TextureView が含まれていない ViewGroup のキャプチャができない不具合を修正しました。
+
 ## [2.0.2] - 2024-10-01
 
 ### Changed
