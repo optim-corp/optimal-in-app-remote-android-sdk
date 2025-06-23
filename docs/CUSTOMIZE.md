@@ -157,3 +157,62 @@ session.setLocale(Locale.SYSTEM);
 ```
 
 </details>
+
+## SDK 表示 UI のデザインカスタマイズ
+
+SDK が表示する UI の画像や文言はカスタマイズすることができます。
+
+### 画像のカスタマイズ
+
+指定のファイル名でプロジェクトに画像を追加することでカスタマイズすることができます。
+
+例として、サポート中のアイコンを変更したい場合は`res/drawable-hdpi/optimal_remote_menu.png`というファイル名で、カスタマイズ後の画像をプロジェクトに追加してください。
+
+各種ピクセル密度に応じてサブディレクトリ（`drawable-hdpi`の部分）は変更してください。詳細は以下をご参照ください。
+
+- <https://developer.android.com/training/multiscreen/screendensities>
+
+カスタマイズできる画像と対応するファイル名は以下のとおりです。
+
+| 項番 | 画像                                | 備考                                         | デフォルト                                                        | 推奨サイズ（hdpi での倍率） |
+| ---- | ----------------------------------- | -------------------------------------------- | ----------------------------------------------------------------- | --------------------------- |
+| 1    | `optimal_remote_menu.png`           | 画面共有中のアイコン                         | <img src="./img/optimal_remote_menu.png" height="32px">           | 114 px × 114 px             |
+| 2    | `optimal_remote_logo.png`           | 画面上部に表示されるロゴ画像                 | <img src="./img/optimal_remote_logo.png" height="32px">           | 206 px × 32 px              |
+| 3    | `optimal_remote_ticket_bg.9.png`    | 受付番号の背景画像                           | <img src="./img/optimal_remote_ticket_bg.9.png" height="32px">    | 114 px × 90 px              |
+| 4    | `optimal_remote_speaker_loud.png`   | 画面共有中メニューのスピーカーオン時のボタン | <img src="./img/optimal_remote_speaker_loud.png" height="32px">   | 144 px × 144 px             |
+| 5    | `optimal_remote_speaker_normal.png` | 画面共有中メニューのスピーカーオフ時のボタン | <img src="./img/optimal_remote_speaker_normal.png" height="32px"> | 144 px × 144 px             |
+| 6    | `optimal_remote_mic_on.png`         | 画面共有中メニューのマイクオン時のボタン     | <img src="./img/optimal_remote_mic_on.png" height="32px">         | 144 px × 144 px             |
+| 7    | `optimal_remote_mic_off.png`        | 画面共有中メニューのマイクオフ時のボタン     | <img src="./img/optimal_remote_mic_off.png" height="32px">        | 144 px × 144 px             |
+| 8    | `optimal_remote_disconnect.png`     | 画面共有中メニューの切断ボタン               | <img src="./img/optimal_remote_disconnect.png" height="32px">     | 144 px × 144 px             |
+
+> [!WARNING]
+> 画像は png のみ対応しております。
+
+> [!WARNING]
+> 推奨サイズを大きく超える、または大きく下回る場合は UI がレイアウト崩れする場合がございます。
+
+### 文言のカスタマイズ
+
+指定のキーでプロジェクトに文字列リソースを追加することでカスタマイズすることができます。
+
+例として、 画面共有中メニューの切断ボタンの英語版のラベルを`DISCONNECT`に変更する場合を以下に示します。
+
+```xml:res/values/strings.xml
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_disconnect_button_label">DISCONNECT</string>
+</resources>
+```
+
+カスタマイズできる文言と対応するキーは以下のとおりです。
+
+| 項番 | キー                           | 備考                                         | デフォルト（日本語）                               | デフォルト（英語）                                |
+| ---- | ------------------------------ | -------------------------------------------- | -------------------------------------------------- | ------------------------------------------------- |
+| 1    | `sdp_did_reserve_indicator`    | 受付番号の上に表示される文言                 | `下記の受付番号を\nオペレーターにお伝えください。` | `Please tell below \nReceipt Number to operator.` |
+| 2    | `lobby_button_cancel`          | 受付番号の下に表示されるボタンのラベル       | `キャンセル`                                       | `Cancel`                                          |
+| 3    | `menu_speaker_button_label`    | 画面共有中メニューのスピーカーボタンのラベル | `スピーカー`                                       | `Speaker`                                         |
+| 4    | `menu_mute_button_label`       | 画面共有中メニューのマイクボタンのラベル     | `消音`                                             | `Mute`                                            |
+| 5    | `menu_disconnect_button_label` | 画面共有中メニューの切断ボタンのラベル       | `切断`                                             | `Disconnect`                                      |
+
+> [!WARNING]
+> デフォルトの文言の文字数を大きく超える、または大きく下回る場合は UI がレイアウト崩れする場合がございます。
