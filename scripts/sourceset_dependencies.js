@@ -1,0 +1,1 @@
+sourceset_dependencies='{":dokkaHtml/debug":[],":dokkaHtml/main":[],":dokkaHtml/release":[],":dokkaHtml/voipDisabled":[],":dokkaHtml/voipDisabledDebug":[],":dokkaHtml/voipDisabledRelease":[],":dokkaHtml/voipEnabled":[],":dokkaHtml/voipEnabledDebug":[],":dokkaHtml/voipEnabledRelease":[]}'

@@ -1,0 +1,38 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:jp.co.optim.optimalremote////PointingToDeclaration/oria_lib/jp.co.optim.optimalremote/index.html
+$dokka.location:jp.co.optim.optimalremote/IORIASessionCallback///PointingToDeclaration/oria_lib/jp.co.optim.optimalremote/-i-o-r-i-a-session-callback/index.html
+$dokka.location:jp.co.optim.optimalremote/IORIASessionCallback/onComplete/#/PointingToDeclaration/oria_lib/jp.co.optim.optimalremote/-i-o-r-i-a-session-callback/on-complete.html
+$dokka.location:jp.co.optim.optimalremote/IORIASessionCallback/onOpen/#/PointingToDeclaration/oria_lib/jp.co.optim.optimalremote/-i-o-r-i-a-session-callback/on-open.html
+$dokka.location:jp.co.optim.optimalremote/IORIASessionProvider///PointingToDeclaration/oria_lib/jp.co.optim.optimalremote/-i-o-r-i-a-session-provider/index.html
+$dokka.location:jp.co.optim.optimalremote/IORIASessionProvider/initSession/#android.content.Context#kotlin.String#kotlin.String/PointingToDeclaration/oria_lib/jp.co.optim.optimalremote/-i-o-r-i-a-session-provider/init-session.html
+$dokka.location:jp.co.optim.optimalremote/IORIASessionProvider/session/#/PointingToDeclaration/oria_lib/jp.co.optim.optimalremote/-i-o-r-i-a-session-provider/session.html
+$dokka.location:jp.co.optim.optimalremote/Locale.EN///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}oria_lib/jp.co.optim.optimalremote/-locale/-e-n/index.html
+$dokka.location:jp.co.optim.optimalremote/Locale.JA///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}oria_lib/jp.co.optim.optimalremote/-locale/-j-a/index.html
+$dokka.location:jp.co.optim.optimalremote/Locale.SYSTEM///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}oria_lib/jp.co.optim.optimalremote/-locale/-s-y-s-t-e-m/index.html
+$dokka.location:jp.co.optim.optimalremote/Locale///PointingToDeclaration/oria_lib/jp.co.optim.optimalremote/-locale/index.html
+$dokka.location:jp.co.optim.optimalremote/Locale/entries/#/PointingToDeclaration/oria_lib/jp.co.optim.optimalremote/-locale/entries.html
+$dokka.location:jp.co.optim.optimalremote/Locale/rawValue/#/PointingToDeclaration/oria_lib/jp.co.optim.optimalremote/-locale/raw-value.html
+$dokka.location:jp.co.optim.optimalremote/Locale/valueOf/#kotlin.String/PointingToDeclaration/oria_lib/jp.co.optim.optimalremote/-locale/value-of.html
+$dokka.location:jp.co.optim.optimalremote/Locale/values/#/PointingToDeclaration/oria_lib/jp.co.optim.optimalremote/-locale/values.html
+$dokka.location:jp.co.optim.optimalremote/ORIAApplication///PointingToDeclaration/oria_lib/jp.co.optim.optimalremote/-o-r-i-a-application/index.html
+$dokka.location:jp.co.optim.optimalremote/ORIAApplication/ORIAApplication/#/PointingToDeclaration/oria_lib/jp.co.optim.optimalremote/-o-r-i-a-application/-o-r-i-a-application.html
+$dokka.location:jp.co.optim.optimalremote/ORIAApplication/initSession/#android.content.Context#kotlin.String#kotlin.String/PointingToDeclaration/oria_lib/jp.co.optim.optimalremote/-o-r-i-a-application/init-session.html
+$dokka.location:jp.co.optim.optimalremote/ORIAApplication/session/#/PointingToDeclaration/oria_lib/jp.co.optim.optimalremote/-o-r-i-a-application/session.html
+$dokka.location:jp.co.optim.optimalremote/ORIASession.Companion///PointingToDeclaration/oria_lib/jp.co.optim.optimalremote/-o-r-i-a-session/-companion/index.html
+$dokka.location:jp.co.optim.optimalremote/ORIASession///PointingToDeclaration/oria_lib/jp.co.optim.optimalremote/-o-r-i-a-session/index.html
+$dokka.location:jp.co.optim.optimalremote/ORIASession/ORIASession/#android.content.Context#kotlin.String#kotlin.String/PointingToDeclaration/oria_lib/jp.co.optim.optimalremote/-o-r-i-a-session/-o-r-i-a-session.html
+$dokka.location:jp.co.optim.optimalremote/ORIASession/canOpen/#/PointingToDeclaration/oria_lib/jp.co.optim.optimalremote/-o-r-i-a-session/can-open.html
+$dokka.location:jp.co.optim.optimalremote/ORIASession/locale/#/PointingToDeclaration/oria_lib/jp.co.optim.optimalremote/-o-r-i-a-session/locale.html
+$dokka.location:jp.co.optim.optimalremote/ORIASession/onRequestPermissionsResult/#kotlin.Int#kotlin.Array[kotlin.String]#kotlin.IntArray/PointingToDeclaration/oria_lib/jp.co.optim.optimalremote/-o-r-i-a-session/on-request-permissions-result.html
+$dokka.location:jp.co.optim.optimalremote/ORIASession/open/#/PointingToDeclaration/oria_lib/jp.co.optim.optimalremote/-o-r-i-a-session/open.html
+$dokka.location:jp.co.optim.optimalremote/ORIASession/setCaptureTextureViewEnabled/#kotlin.Boolean/PointingToDeclaration/oria_lib/jp.co.optim.optimalremote/-o-r-i-a-session/set-capture-texture-view-enabled.html
+$dokka.location:jp.co.optim.optimalremote/ORIASession/setRemoteInputAcceptsAutomaticallyEnabled/#kotlin.Boolean/PointingToDeclaration/oria_lib/jp.co.optim.optimalremote/-o-r-i-a-session/set-remote-input-accepts-automatically-enabled.html
+$dokka.location:jp.co.optim.optimalremote/ORIASession/setRemoteInputEnabled/#kotlin.Boolean/PointingToDeclaration/oria_lib/jp.co.optim.optimalremote/-o-r-i-a-session/set-remote-input-enabled.html
+$dokka.location:jp.co.optim.optimalremote/ORIASession/setVoiceChatEnabled/#kotlin.Boolean/PointingToDeclaration/oria_lib/jp.co.optim.optimalremote/-o-r-i-a-session/set-voice-chat-enabled.html
+$dokka.location:jp.co.optim.optimalremote/ORIASessionProvider.Companion///PointingToDeclaration/oria_lib/jp.co.optim.optimalremote/-o-r-i-a-session-provider/-companion/index.html
+$dokka.location:jp.co.optim.optimalremote/ORIASessionProvider///PointingToDeclaration/oria_lib/jp.co.optim.optimalremote/-o-r-i-a-session-provider/index.html
+$dokka.location:jp.co.optim.optimalremote/ORIASessionProvider/ORIASessionProvider/#/PointingToDeclaration/oria_lib/jp.co.optim.optimalremote/-o-r-i-a-session-provider/-o-r-i-a-session-provider.html
+$dokka.location:jp.co.optim.optimalremote/ORIASessionProvider/initSession/#android.content.Context#kotlin.String#kotlin.String/PointingToDeclaration/oria_lib/jp.co.optim.optimalremote/-o-r-i-a-session-provider/init-session.html
+$dokka.location:jp.co.optim.optimalremote/ORIASessionProvider/session/#/PointingToDeclaration/oria_lib/jp.co.optim.optimalremote/-o-r-i-a-session-provider/session.html
+jp.co.optim.optimalremote
