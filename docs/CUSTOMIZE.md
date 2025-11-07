@@ -216,3 +216,41 @@ SDK が表示する UI の画像や文言はカスタマイズすることがで
 
 > [!WARNING]
 > デフォルトの文言の文字数を大きく超える、または大きく下回る場合は UI がレイアウト崩れする場合がございます。
+
+## マスキング機能
+
+オペレーターツールに共有したくない View はマスキングすることができます。
+
+### タグの指定
+
+共有したくない View の [android:tag](https://developer.android.com/reference/android/view/View#attr_android:tag) を指定し、対象の View をマスキングして表示します。
+
+例として、「view1」、「view2」のタグがついた View をマスキングする場合は以下のように実装してください。
+
+<details open>
+<summary>Kotlin</summary>
+
+```kotlin
+session.setMaskElements(
+    listOf(
+        "view1",
+        "view2"
+    )
+)
+```
+
+</details>
+
+<details>
+<summary>Java</summary>
+
+```java
+session.setMaskElements(
+    List.of(
+        "view1",
+        "view2"
+    )
+);
+```
+
+</details>
