@@ -1,5 +1,7 @@
 # OPTiM Developer Registration / Obtaining Keys and Tool Information for your App
 
+Developer registration with OPTiM is required to develop apps using the In-App Remote SDK. This is necessary to issue the connection information for the Operator Tool that performs screen sharing.
+
 1.  Using the OPTiM Developer Registration Form below, please fill in your personal/corporate information and email the form to [developer@optim.co.jp](developer@optim.co.jp)
 2.  OPTiM will send you the following SDK items for your App:
     - A profile and key pair that will identify your App on Optimal Remote
@@ -23,7 +25,7 @@ To register as an OPTiM developer, please complete the fields below:
 Full Name:
 Email:
 Company:
-Deaprtment:
+Department:
 
 App name building with In App Remote SDK:
 "package" attribute value in AndroidManifest.xml for App built with SDK (For generating your App identify):
@@ -53,7 +55,7 @@ please fill in the fields below. We’ll send you an additional App Profile and 
 Full Name:
 Email:
 Company:
-Deaprtment:
+Department:
 
 Describe the second App name building with In App Remote SDK:
 "package" attribute value in AndroidManifest.xml for App built with SDK (For generating your App identify):

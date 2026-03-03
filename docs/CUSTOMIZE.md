@@ -184,6 +184,7 @@ SDK が表示する UI の画像や文言はカスタマイズすることがで
 | 6    | `optimal_remote_mic_on.png`         | 画面共有中メニューのマイクオン時のボタン     | <img src="./img/optimal_remote_mic_on.png" height="32px">         | 144 px × 144 px             |
 | 7    | `optimal_remote_mic_off.png`        | 画面共有中メニューのマイクオフ時のボタン     | <img src="./img/optimal_remote_mic_off.png" height="32px">        | 144 px × 144 px             |
 | 8    | `optimal_remote_disconnect.png`     | 画面共有中メニューの切断ボタン               | <img src="./img/optimal_remote_disconnect.png" height="32px">     | 144 px × 144 px             |
+| 9    | `optimal_remote_pause.png`          | 画面共有一時停止中のアイコン                 | <img src="./img/optimal_remote_pause.png" height="32px">          | 512 px × 512 px             |
 
 > [!WARNING]
 > 画像は png のみ対応しております。
@@ -251,6 +252,52 @@ session.setMaskElements(
         "view2"
     )
 );
+```
+
+</details>
+
+## 画面共有一時停止機能
+
+オペレーターとの画面共有を一時的に停止することができます。
+
+画面共有の停止中もオペレーターツールとの接続は継続されますので、クライアントツールから再度画面共有を開始することができます。
+
+オペレーターとの画面共有を一時的に停止するには、以下のように `ORIASession` クラスの `pause` メソッドを呼び出してください。
+
+<details open>
+<summary>Kotlin</summary>
+
+```kotlin
+session.pause()
+```
+
+</details>
+
+<details>
+<summary>Java</summary>
+
+```java
+session.pause();
+```
+
+</details>
+
+オペレーターとの画面共有を再度開始するには、以下のように `ORIASession` クラスの `resume` メソッドを呼び出してください。
+
+<details open>
+<summary>Kotlin</summary>
+
+```kotlin
+session.resume()
+```
+
+</details>
+
+<details>
+<summary>Java</summary>
+
+```java
+session.resume();
 ```
 
 </details>

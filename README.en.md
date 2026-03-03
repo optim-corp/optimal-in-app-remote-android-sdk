@@ -10,10 +10,10 @@ This documentation in Japanese is here: [日本語ドキュメント](README.md)
 ## Operating environment
 
 - Operating Environment for app
-  1.  Android 5.0 - 14.0
-  2.  English / Japanese environment
-      - The default language is English.
-  3.  Access to the Internet is required.
+  1. Android 5.0 - 16.0
+  1. English / Japanese environment
+     - The default language is English.
+  1. Access to the Internet is required.
 - Required development environment
   - Android Studio
 
@@ -45,9 +45,9 @@ Before starting with the procedure below, register as a developer and make sure 
 
 [Please refer here for the detail request steps.](docs/REGISTRATION.en.md)
 
-1.  Profile and key pair required for SDK
-2.  Optimal Remote Operator Tool (for Windows)
-3.  User account (user ID and password) for using Optimal Remote Operator Tool
+1. Profile and key pair required for SDK
+1. Optimal Remote Operator Tool (for Windows)
+1. User account (user ID and password) for using Optimal Remote Operator Tool
 
 ### 1. Checkout this git repository
 
@@ -66,11 +66,11 @@ dependencies {
 }
 ```
 
-#### Modify the SDK AndroidManifest.xml
+##### Modify the SDK AndroidManifest.xml
 
 The element with the SDK AndroidManifest.xml may conflict with the target application. In that case, the following edits are necessary.
 
-In the AndroidManifest.xml file for the target application, add `xmlns:tools="http://schemas.android.com/tools` to the `manifest` element, and `tools:replace="android:theme,android:allowBackup` to the `application` element.
+In the AndroidManifest.xml file for the target application, add `xmlns:tools="http://schemas.android.com/tools"` to the `manifest` element, and `tools:replace="android:theme,android:allowBackup"` to the `application` element.
 
 ```xml
 <manifest package="com.example.your_app"
@@ -83,15 +83,6 @@ In the AndroidManifest.xml file for the target application, add `xmlns:tools="ht
         tools:replace="android:theme,android:allowBackup"
     ...
 </manifest>
-```
-
-#### Modify for obfuscation
-
-If obfuscation of the project is enabled, please add the following codes to the settings file of Proguard.
-
-```
--keep class jp.co.optim.** { *; }
--keep class org.webrtc.** { *; }
 ```
 
 ## Tutorials for using SDK
@@ -202,6 +193,14 @@ class MainActivity : Activity(), IORIASessionCallback, View.OnClickListener {
         mButtonHelp?.isEnabled = true
     }
 
+    override fun onRequestPermissionsResult(
+            requestCode: Int, permissions: Array<String>, grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        // 16. If VoIP is enabled, call the following method.
+        mSession?.onRequestPermissionsResult(requestCode, permissions, grantResults)
+    }
+
 // ...
 }
 ```
@@ -278,6 +277,15 @@ public class MainActivity extends Activity implements IORIASessionCallback, OnCl
     mButtonHelp.setEnabled(true);
   }
 
+  @Override
+  public void onRequestPermissionsResult(
+      int requestCode, String[] permissions, int[] grantResults
+  ) {
+      super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+      // 16. If VoIP is enabled, call the following method.
+      mSession.onRequestPermissionsResult(requestCode, permissions, grantResults);
+  }
+
 // ...
 }
 ```
@@ -289,3 +297,14 @@ public class MainActivity extends Activity implements IORIASessionCallback, OnCl
 After building your app, run the app from the device with access to the Internet. Tap the button to display "Receipt Number". Enter this Receipt Number from Operator Tool. Operator Tool and App is connected and app screen is displayed on Operator Tool. Now you are ready to go!
 
 This completes the tutorial for SDK. Please contact us if you experience problems connecting to the Operator Tool.
+
+## When not using voice call feature
+
+In the "Adding SDK to the dependent library" section above, please add the following code to `build.gradle` instead.
+
+```groovy
+dependencies {
+    implementation files("path/to/optimal_remote_no_voip.aar")
+    implementation "com.squareup.okhttp3:okhttp:4.11.0"
+}
+```
