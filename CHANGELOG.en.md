@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.4.0] - 2026-04-14
+
+### Changed
+
+- Added `setGpuCaptureEnabled` API to switch the screen capture mode.
+
+> [!NOTE]
+> For details on switching the screen capture mode, please refer to [CUSTOMIZE.en.md](./docs/CUSTOMIZE.en.md).
+
 ## [2.3.0] - 2026-02-24
 
 ### Changed

@@ -301,3 +301,40 @@ session.resume();
 ```
 
 </details>
+
+## 画面キャプチャモードを切り替える
+
+既定のキャプチャモードでは、画面共有中に WebView のコンテキストメニューが二重表示される場合があります。
+
+この問題を回避するには、`ORIASession` オブジェクトの `setGpuCaptureEnabled` メソッドで引数に `true` を渡してください。
+
+既定のキャプチャモードに戻すには、`false` を渡してください。
+
+<details open>
+<summary>Kotlin</summary>
+
+```kotlin
+// GPU キャプチャモードに切り替える
+session.setGpuCaptureEnabled(true)
+
+// 既定のキャプチャモードに戻す
+session.setGpuCaptureEnabled(false)
+```
+
+</details>
+
+<details>
+<summary>Java</summary>
+
+```java
+// GPU キャプチャモードに切り替える
+session.setGpuCaptureEnabled(true);
+
+// 既定のキャプチャモードに戻す
+session.setGpuCaptureEnabled(false);
+```
+
+</details>
+
+> [!NOTE]
+> `setGpuCaptureEnabled` は Android 8（API 26）以上で有効です。それ以前のバージョンで呼び出した場合は無視されます。

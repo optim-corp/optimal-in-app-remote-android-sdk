@@ -303,3 +303,40 @@ session.resume();
 ```
 
 </details>
+
+## Switching the screen capture mode
+
+With the default capture mode, the WebView context menu may appear twice during screen sharing.
+
+To avoid this issue, call the `setGpuCaptureEnabled` method on the `ORIASession` object with `true` as the argument.
+
+To revert to the default capture mode, pass `false`.
+
+<details open>
+<summary>Kotlin</summary>
+
+```kotlin
+// Switch to GPU capture mode
+session.setGpuCaptureEnabled(true)
+
+// Revert to the default capture mode
+session.setGpuCaptureEnabled(false)
+```
+
+</details>
+
+<details>
+<summary>Java</summary>
+
+```java
+// Switch to GPU capture mode
+session.setGpuCaptureEnabled(true);
+
+// Revert to the default capture mode
+session.setGpuCaptureEnabled(false);
+```
+
+</details>
+
+> [!NOTE]
+> `setGpuCaptureEnabled` is effective on Android 8 (API 26) and above. Calling it on earlier versions has no effect.
