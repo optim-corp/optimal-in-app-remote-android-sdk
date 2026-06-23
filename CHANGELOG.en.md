@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.4.1] - 2026-06-23
+
+### Changed
+
+- Added support for Android 17.
+
 ## [2.4.0] - 2026-04-14
 
 ### Changed

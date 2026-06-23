@@ -10,7 +10,7 @@ Optimal In-App Remote SDK for Android は、 Android アプリの遠隔支援を
 ## 対象環境
 
 - SDK 動作環境
-  1. Android 5.0 〜 16.0
+  1. Android 5.0 〜 17.0
   1. 英語、日本語
      - デフォルト言語は英語です
   1. インターネットに接続できるネットワーク環境
@@ -61,6 +61,21 @@ Git でチェックアウトしてください。アーカイブファイルと�
 dependencies {
     implementation files("path/to/optimal_remote.aar")
     implementation "com.squareup.okhttp3:okhttp:4.11.0"
+}
+```
+
+#### x86_64を除外します
+
+本SDKはx86_64アーキテクチャにおける16KB Page Size環境に対応していません。
+対象のCPUアーキテクチャからx86_64を除外するために、build.gradle へ次のコードを追記してください。
+
+```groovy
+android {
+    defaultConfig {
+        ndk {
+            abiFilters 'arm64-v8a', 'armeabi-v7a'
+        }
+    }
 }
 ```
 

@@ -10,7 +10,7 @@ This documentation in Japanese is here: [日本語ドキュメント](README.md)
 ## Operating environment
 
 - Operating Environment for app
-  1. Android 5.0 - 16.0
+  1. Android 5.0 - 17.0
   1. English / Japanese environment
      - The default language is English.
   1. Access to the Internet is required.
@@ -61,6 +61,21 @@ To add the SDK to the target application's dependent library, please add the fol
 dependencies {
     implementation files("path/to/optimal_remote.aar")
     implementation "com.squareup.okhttp3:okhttp:4.11.0"
+}
+```
+
+#### Excluding x86_64 from build target
+
+This SDK does not support environments with a 16KB page size on the x86_64 architecture.
+To exclude x86_64 from the target CPU architectures, add the following code to `build.gradle`.
+
+```groovy
+android {
+    defaultConfig {
+        ndk {
+            abiFilters 'arm64-v8a', 'armeabi-v7a'
+        }
+    }
 }
 ```
 
